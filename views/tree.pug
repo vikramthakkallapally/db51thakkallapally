@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  - let trees  = [{treeColor:"Green", age: 10, name:"Neem"},{treeColor:"Brown", age: 5, name:"Tamarind"},{treeColor:"Black", age: 10, name:"Mango"}]
+  div(class="container-fluid mt-3")
+  div(class="row")
+    each tree,index in trees
+        div(class="col-sm-4" onclick=`buy(${index})`) #{tree.treeColor} - #{tree.age} - #{tree.name}
+    script.
+     
+      function buy(itemNo)
+      {
+        alert(`You selected Item ${itemNo+1}`)
+      }
