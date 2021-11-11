@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  - let trees  = [{treeColor:"Green", age: 10, name:"Neem"},{treeColor:"Brown", age: 5, name:"Tamarind"},{treeColor:"Black", age: 10, name:"Mango"}]
+  - let trees  = results;
   div(class="container-fluid mt-3")
   div(class="row")
     each tree,index in trees
