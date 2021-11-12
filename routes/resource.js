@@ -18,8 +18,7 @@ router.post('/tree', tree_controller.tree_create_post);
 router.delete('/tree/:id',tree_controller.tree_delete); 
  
 // PUT request to update Tree. 
-router.put('/tree/:id', 
-tree_controller.tree_update_put); 
+router.put('/tree/:id', tree_controller.tree_update_put); 
  
 // GET request for one Tree. 
 router.get('/tree/:id', tree_controller.tree_detail);
