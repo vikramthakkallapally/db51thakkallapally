@@ -13,6 +13,9 @@ router.get('/', api_controller.api);
  
 // POST request for creating a Tree.  
 router.post('/tree', tree_controller.tree_create_post); 
+
+
+router.get('/tree', tree_controller.tree_list); 
  
 // DELETE request to delete Tree. 
 router.delete('/tree/:id',tree_controller.tree_delete); 
@@ -23,7 +26,6 @@ router.put('/tree/:id', tree_controller.tree_update_put);
 // GET request for one Tree. 
 router.get('/tree/:id', tree_controller.tree_detail);
  
-// GET request for list of all Tree items. 
-router.get('/tree', tree_controller.tree_view_all_Page); 
+
  
 module.exports = router;
