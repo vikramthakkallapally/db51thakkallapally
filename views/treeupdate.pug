@@ -2,27 +2,29 @@ extends layout
  
 block content 
   h1= title 
- 
-  - let treeid = toShow._id 
-  - let treeColor = toShow.treeColor 
-  - let age = toShow.age 
-  - let name = toShow.name
-   
-  div.row(class='mb-2') 
-    div.mr-1 ID is 
-    div #{treeid} 
-  - let actionid = "/resource/tree/" + treeid 
-  form(id='TreeForm', action= actionid, method="PUT") 
-    div.form-group 
-        label.treeAttr(for='treeColor') treeColor
-        input#treeColor(type='text', name='treeColor', value= treeColor ) 
-    div.form-group 
-        label.treeAttr(for='age') Tree age
-        input#age(type='number', name='age', value= age ) 
-    div.form-group 
-        label.treeAttr(for='name') Tree name
-        input#name(type='text', name='name', value= name ) 
-    input(type="submit") 
+  if (toShow == null) 
+    h2 No instance to show 
+  else 
+    - let treeid = toShow._id 
+    - let treeColor = toShow.treeColor 
+    - let age = toShow.age 
+    - let name = toShow.name
+    
+    div.row(class='mb-2') 
+        div.mr-1 ID is 
+        div #{treeid} 
+    - let actionid = "/resource/tree/" + treeid 
+    form(id='TreeForm', action= actionid, method="PUT") 
+        div.form-group 
+            label(for='treeColor') Tree Color:
+            input#treeColor(type='text', class="form-control", name='treeColor', value= treeColor ) 
+        div.form-group 
+            label(for='age') Tree Age:
+            input#age(type='number',class="form-control", name='age', value= age ) 
+        div.form-group 
+            label(for='name') Tree Name:
+            input#name(type='text',class="form-control", name='name', value= name ) 
+        input(type="submit" class="btn btn-primary") 
  
   script. 
     document.forms['TreeForm'].addEventListener('submit', (event) => { 
