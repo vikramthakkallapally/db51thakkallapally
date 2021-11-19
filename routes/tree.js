@@ -9,7 +9,6 @@ router.get('/', function(req, res, next) {
 
 // GET request for list of all Tree items. 
 router.get('/tree', tree_controller.tree_view_all_Page); 
-module.exports = router;
 
 /* GET detail tree page */
 router.get('/detail', tree_controller.tree_view_one_Page);
@@ -22,3 +21,5 @@ router.get('/update', tree_controller.tree_update_Page);
 
 /* GET create tree page */
 router.get('/delete', tree_controller.tree_delete_Page);
+
+module.exports = router;
