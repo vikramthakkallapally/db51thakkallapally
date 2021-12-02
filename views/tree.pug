@@ -1,19 +1,29 @@
 extends layout
 
 block content
+  - let create = `dispatch(\"/tree/create\")`
+  - let tree = results
+  button.btn(class="btn-info m1-1", onclick=create) Create
   h1= title
-  - let trees  = results;
-  div(class="container-fluid mt-3")
-    div(class="row")
-      each tree,index in trees
-        - let destination = `dispatch(\"/trees/update?id=${tree._id}\")` 
-        div(class="col-sm-4" onclick=`buy(${index})`) #{tree.treeColor} - #{tree.age} - #{tree.name}
-        button.btn( class="btn-primary ml-1", onclick= destination) Update 
-  script.
-    function buy(itemNo)
-    {
-      alert(`You selected Item ${itemNo+1}`)
-    }
-    function dispatch(path){ 
-      window.location.href=path 
-    } 
+  p Welcome to the tree pug
+  div(class="container-fluid") 
+    div(class="row") 
+      each item in tree 
+        - let destination = `dispatch(\"/tree/update?id=${item._id}\")`
+        - let detail=`dispatch(\"/tree/detail/?id=${item._id}\")`
+        - let del=`dispatch(\"/tree/delete/?id=${item._id}\")`
+        div(class="row-sm-2", class="m-1") Item #{item.name}(#{item.treeColor}) is #{item.age}
+            button.btn(class="btn-warning ml-1", onclick= destination) Update 
+            button.btn( class="btn-success ml-2", onclick=detail ) Get Detail
+            button.btn( class="btn-info ml-2", onclick=del ) Delete 
+
+  script.                
+      function buy(itemNo)
+      {
+            alert(`you purchased Item ${itemNo+1}`)
+      }
+  script. 
+        function dispatch(path)
+      { 
+            window.location.href=path 
+      }

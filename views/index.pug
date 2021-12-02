@@ -1,20 +1,10 @@
-extends layout
-
-block content
-  h1= title
-  p This is my Second Heroku server
-  button(type="button", class="btn btn-success", onClick = "update()") Press Me
-  
-  p
-  div(id="target") Display
-
-  script.
-    var client_count = 0;
-
-    function update(){
-      client_count = client_count + 1;
-      console.log(client_count);
-      document.getElementById("target").innerHTML = "Value now " + client_count;
-    }
-  
-  a(href="trees") Go to Trees page
+block content 
+  if (!user) 
+    a(href="/login") Login 
+    br 
+    a(href="/register") Register 
+  if (user) 
+    p You are currently logged in as #{user.username} 
+    a(href="/tree") Take me to Trees 
+    br 
+    a(href="/logout") Logout

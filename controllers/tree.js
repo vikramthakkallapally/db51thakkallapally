@@ -59,7 +59,8 @@ failed`);
 
 exports.tree_view_all_Page = async function(req, res) { 
     try{ 
-        theTree = await tree.find(); 
+        theTree = await tree.find();
+        console.log(theTree,'ss'); 
         res.render('tree', { title: 'Tree Search Results', results: theTree }); 
     } 
     catch(err){ 
